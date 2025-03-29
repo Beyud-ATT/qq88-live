@@ -14,12 +14,12 @@ export default function BurgerTopNav() {
         className="rounded-full flex items-center justify-center"
         onClick={() => setIsOpen(true)}
       >
-        <TfiMenuAlt className="text-2xl" />
+        <TfiMenuAlt className="text-2xl text-white" />
       </button>
       <Drawer
         title={
           <IoCloseSharp
-            className="mt-4 text-2xl"
+            className="mt-4 text-2xl text-white"
             onClick={() => setIsOpen(false)}
           />
         }
@@ -28,14 +28,14 @@ export default function BurgerTopNav() {
         onClose={() => setIsOpen(false)}
         open={isOpen}
         key="left"
-        className="!bg-[var(--video-player-bg)] bg-opacity-80"
+        className="!bg-[var(--color-brand-primary)] bg-opacity-80"
       >
         <Menu
           mode="vertical"
           items={items}
           selectedKeys={[current]}
           onClick={(e) => setCurrent(e.key)}
-          className="!bg-[var(--video-player-bg)] !border-none"
+          className="!bg-[var(--color-brand-primary)] !border-none"
         />
       </Drawer>
     </div>

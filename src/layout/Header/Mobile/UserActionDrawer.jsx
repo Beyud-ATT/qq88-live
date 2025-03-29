@@ -45,7 +45,7 @@ function UserActionDrawerInner() {
         title={
           <Flex className="w-full px-4" justify="end">
             <IoCloseSharp
-              className="mt-4 text-2xl"
+              className="mt-4 text-2xl text-white"
               onClick={() => setIsOpen(false)}
             />
           </Flex>
@@ -55,7 +55,7 @@ function UserActionDrawerInner() {
         onClose={() => setIsOpen(false)}
         open={isOpen}
         key="left"
-        className="!bg-[var(--video-player-bg)] bg-opacity-80"
+        className="!bg-[var(--color-brand-primary)] bg-opacity-80"
       >
         <LeftNav />
       </Drawer>
