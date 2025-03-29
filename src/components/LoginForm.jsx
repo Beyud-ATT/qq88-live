@@ -5,7 +5,12 @@ import useRecaptcha from "../hooks/useRecaptcha";
 import { GoogleAuthProvider } from "../contexts/GoogleAuthContext";
 import { useModal } from "./CompoundModal";
 import ForgotPassword from "./ForgotPassword";
-import LogoImg from "../assets/logo.png";
+import LogoImg from "../assets/login-logo.png";
+
+export const inputStyle = `h-12 rounded-lg bg-[var(--color-brand-primary-lighter-2)] 
+border-[2px] !border-[var(--color-brand-primary)] 
+focus:!shadow-[0px_1px_6.9px_0px_rgba(0,143,35,0.55)] !focus:outline-none
+focus-within:!shadow-[0px_1px_6.9px_0px_rgba(0,143,35,0.55)]`;
 
 export default function LoginForm() {
   const { login } = useAuth();
@@ -26,8 +31,8 @@ export default function LoginForm() {
   };
 
   return (
-    <div className="rounded-2xl py-3 md:px-3 px-1 w-full">
-      <div className="flex flex-col justify-center items-center mb-8">
+    <div className="relative rounded-2xl py-3 md:px-3 px-1 w-full">
+      <div className="flex flex-col justify-center items-center mb-8 -translate-y-8">
         <Image preview={false} src={LogoImg} alt="logo" loading="lazy" />
       </div>
       <Form
@@ -46,7 +51,7 @@ export default function LoginForm() {
           <Input
             autoComplete="new-username"
             placeholder="Nhập tài khoản"
-            className="h-12 bg-white/10 border border-gray-600 rounded-lg"
+            className={inputStyle}
           />
         </Form.Item>
 
@@ -57,7 +62,7 @@ export default function LoginForm() {
           <Input.Password
             autoComplete="new-password"
             placeholder="Nhập mật khẩu"
-            className="h-12 bg-white/10 border border-gray-600 rounded-lg login-form-password"
+            className={inputStyle}
             iconRender={(visible) =>
               visible ? <FaRegEye /> : <FaRegEyeSlash />
             }
@@ -86,7 +91,7 @@ export default function LoginForm() {
             <Input
               type="text"
               placeholder="Nhập mã captcha"
-              className="h-12 bg-white/10 border border-gray-600 rounded-lg"
+              className={inputStyle}
             />
             <div className="absolute right-2 top-1/4 py-0.5 px-2 rounded-md bg-[#E6DBCD] text-[#134B3E] font-bold italic">
               {recaptcha}
@@ -128,9 +133,9 @@ export default function LoginForm() {
         </div>
       </Form>
       <Flex gap={8} justify="center" items="center" className="w-full my-6">
-        <div className="w-full h-[0.5px] my-3 bg-[#515151]"></div>
-        <p className="px-2 text-center text-[#515151]">hoặc</p>
-        <div className="w-full h-[0.5px] my-3 bg-[#515151]"></div>
+        <div className="w-full h-[0.5px] my-3 bg-[var(--text-color)]"></div>
+        <p className="px-2 text-center text-[var(--text-color)]">hoặc</p>
+        <div className="w-full h-[0.5px] my-3 bg-[var(--text-color)]"></div>
       </Flex>
       <Flex className="w-full" justify="center">
         <GoogleAuthProvider.GoogleLoginButton />

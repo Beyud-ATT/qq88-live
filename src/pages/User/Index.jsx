@@ -1,10 +1,11 @@
-import { Col, Flex, Row } from "antd";
+import { Col, Flex, Image, Row } from "antd";
 import LeftNav from "./LeftNav";
 
 import { Outlet } from "react-router";
 import DeviceProvider from "../../contexts/ResponsiveContext";
 import useAccount from "../../hooks/useAccount";
 import { UserProfileFrame } from "../../components/UserProfileFrame";
+import UserPageHeader from "../../assets/user-page-header.png";
 
 export default function User() {
   const { data: res } = useAccount();
@@ -18,7 +19,12 @@ export default function User() {
       <div className="flex-1">
         {/* Profile Header */}
         <DeviceProvider.PC>
-          <div className="flex items-center bg-gradient-to-r from-[#362AD6] via-[#9067EA] to-[#EAE5BF] h-[120px]"></div>
+          <Image
+            src={UserPageHeader}
+            alt="profile-header"
+            preview={false}
+            loading="lazy"
+          />
         </DeviceProvider.PC>
 
         {/* Content Area */}

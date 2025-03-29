@@ -80,7 +80,10 @@ function PhoneInputField({ onChange, value, ...rest }) {
         onlyCountries={["vn"]}
         value={phoneNumber}
         onChange={handlePhoneChange}
-        inputClass="!h-12 !bg-white/10 focus:!bg-white !border !border-gray-600 !rounded-lg !w-full"
+        inputClass="!h-12 
+          !bg-[var(--color-brand-primary-lighter-2)] focus:!shadow-[0px_1px_6.9px_0px_rgba(0,143,35,0.55)]
+          !border-[2px] !border-[var(--color-brand-primary)] 
+          !rounded-lg !w-full"
         inputProps={{
           name: "phone",
           onPaste: handlePaste,

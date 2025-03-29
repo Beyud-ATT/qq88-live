@@ -34,13 +34,14 @@
   --text-color-login-signup: #85888e;
   --color-brand-primary: #006719;
   --color-brand-primary-lighter: #c0ffd0;
+  --color-brand-primary-lighter-2: #fbfafa;
   --table-header-bg: #1f242f;
   --table-border-color: #333741;
   --disabled-field-bg: #dbdbdb;
   --text-color: #006719;
   --footer-border-bottom-color: #4c9bb6;
   --video-player-bg: #195571;
-  --user-form-bg: #fffcdf;
+  --user-form-bg: #fbfafa;
 
   /* For Webkit browsers (Chrome, Safari, etc)  */
   ::-webkit-scrollbar {
@@ -77,14 +78,6 @@
 
   .ant-rate-star-zero .anticon {
     color: #ffffffa6;
-  }
-
-  .login-form-password input::placeholder {
-    color: var(--text-color-login-signup);
-  }
-
-  .signup-password-field input::placeholder {
-    color: var(--text-color-login-signup);
   }
 
   #profile-form .ant-input::placeholder {
@@ -210,13 +203,18 @@
     color: var(--color-brand-primary-lighter);
   }
 
+  .ant-modal .ant-modal-close:hover {
+    background: transparent;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:focus {
+    transition: background-color 0s 600000s, color 0s 600000s !important;
+  }
+
   @media screen and (max-width: 768px) {
     #user-content {
-      background: radial-gradient(
-        71.52% 71.52% at 50% 100%,
-        #58f8fe 0%,
-        #fff 100%
-      );
+      background: #fbfafa;
     }
   }
 }

@@ -3,6 +3,7 @@ import { CompoundModal } from "../../components/CompoundModal";
 import LoginForm from "../../components/LoginForm";
 import SignUpForm from "../../components/SignUpForm";
 import { useAuth } from "../../contexts/AuthContext";
+import { MdClose } from "react-icons/md";
 
 export default function GroupButton() {
   const { isAuthenticated } = useAuth();
@@ -23,10 +24,13 @@ export default function GroupButton() {
             )}
           />
           <CompoundModal.Content
-            className="border-[2px] border-[#C0C0C0] !rounded-3xl pb-0 !bg-transparent"
             classNames={{
-              content: "!rounded-3xl !bg-[#FFFCDF]",
+              content:
+                "!rounded-3xl !bg-transparent md:!bg-[url('/src/assets/pc-bg.png')] bg-[url('/src/assets/mobile-bg.png')] bg-cover bg-no-repeat bg-center",
             }}
+            closeIcon={
+              <MdClose className="text-2xl !text-[var(--color-brand-primary)] translate-y-2" />
+            }
           >
             <LoginForm />
           </CompoundModal.Content>
@@ -50,10 +54,13 @@ export default function GroupButton() {
             )}
           />
           <CompoundModal.Content
-            className="border-[2px] border-[#C0C0C0] !rounded-3xl pb-0 !bg-transparent"
             classNames={{
-              content: "!rounded-3xl !bg-[#FFFCDF]",
+              content:
+                "!rounded-3xl !bg-transparent md:!bg-[url('/src/assets/pc-bg.png')] bg-[url('/src/assets/mobile-bg.png')] bg-cover bg-no-repeat bg-center",
             }}
+            closeIcon={
+              <MdClose className="text-2xl !text-[var(--color-brand-primary)] translate-y-2" />
+            }
           >
             <SignUpForm />
           </CompoundModal.Content>

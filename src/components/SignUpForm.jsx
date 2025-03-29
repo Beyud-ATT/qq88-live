@@ -5,7 +5,8 @@ import { useAuth } from "../contexts/AuthContext";
 import PhoneInputField from "./PhoneInputField";
 import { useModal } from "./CompoundModal";
 import useRecaptcha from "../hooks/useRecaptcha";
-import LogoImg from "../assets/logo.png";
+import LogoImg from "../assets/login-logo.png";
+import { inputStyle } from "./LoginForm";
 
 export default function SignUpForm() {
   const phoneNumberRef = useRef(null);
@@ -26,7 +27,7 @@ export default function SignUpForm() {
 
   return (
     <div className="py-3 md:px-3 px-1">
-      <div className="flex flex-col justify-center items-center mb-8">
+      <div className="flex flex-col justify-center items-center mb-8 -translate-y-8">
         <Image preview={false} src={LogoImg} alt="logo" loading="lazy" />
       </div>
 
@@ -64,10 +65,7 @@ export default function SignUpForm() {
                 },
               ]}
             >
-              <Input
-                placeholder="Tên hiển thị"
-                className="h-12 bg-white/10 border border-gray-600 rounded-lg"
-              />
+              <Input placeholder="Tên hiển thị" className={inputStyle} />
             </Form.Item>
 
             <Form.Item
@@ -81,7 +79,7 @@ export default function SignUpForm() {
               <Input
                 autoComplete="new-username"
                 placeholder="Tên tài khoản"
-                className="h-12 bg-white/10 border border-gray-600 rounded-lg"
+                className={inputStyle}
               />
             </Form.Item>
 
@@ -92,10 +90,7 @@ export default function SignUpForm() {
                 { type: "email", message: "Email không hợp lệ!" },
               ]}
             >
-              <Input
-                placeholder="Email"
-                className="h-12 bg-white/10 border border-gray-600 rounded-lg"
-              />
+              <Input placeholder="Email" className={inputStyle} />
             </Form.Item>
           </Col>
           <Col span={12} xs={24} md={12} className="md:pl-2">
@@ -124,7 +119,7 @@ export default function SignUpForm() {
               <Input.Password
                 autoComplete="new-password"
                 placeholder="Mật khẩu"
-                className="h-12 bg-white/10 border border-gray-600 rounded-lg signup-password-field"
+                className={inputStyle}
                 iconRender={(visible) =>
                   visible ? <FaRegEye /> : <FaRegEyeSlash />
                 }
@@ -148,7 +143,7 @@ export default function SignUpForm() {
             >
               <Input.Password
                 placeholder="Xác nhận mật khẩu"
-                className="h-12 bg-white/10 border border-gray-600 rounded-lg signup-password-field"
+                className={inputStyle}
                 iconRender={(visible) =>
                   visible ? <FaRegEye /> : <FaRegEyeSlash />
                 }
@@ -186,7 +181,7 @@ export default function SignUpForm() {
                 <Input
                   type="text"
                   placeholder="Nhập mã captcha"
-                  className="h-12 bg-white/10 border border-gray-600 rounded-lg"
+                  className={inputStyle}
                 />
                 <div className="absolute right-2 top-1/4 py-0.5 px-2 rounded-md bg-[#E6DBCD] text-[#134B3E] font-bold italic">
                   {recaptcha}

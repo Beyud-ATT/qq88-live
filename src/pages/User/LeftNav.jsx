@@ -147,7 +147,7 @@ const LeftNav = () => {
         if (!isIdol && item.key === "livestreams-config") return null;
         return item;
       })}
-      className="lg:!w-[26%] w-full min-h-screen p-4 bg-[var(--color-brand-primary-lighter)]"
+      className="lg:!w-[26%] w-full min-h-screen p-4 bg-[var(--color-brand-primary)]"
     />
   );
 };
