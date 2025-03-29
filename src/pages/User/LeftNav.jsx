@@ -21,16 +21,16 @@ import { useUserActionDrawer } from "../../layout/Header/Mobile/UserActionDrawer
 import { UserType } from "../../utils/constant";
 
 const menuItems = [
-  {
-    key: "stream-dashboard",
-    icon: <RiLiveFill />,
-    label: (
-      <Link to={import.meta.env.VITE_DASHBOARD_URL} target="_blank">
-        Dashboard
-      </Link>
-    ),
-    extra: <FaChevronRight />,
-  },
+  // {
+  //   key: "stream-dashboard",
+  //   icon: <RiLiveFill />,
+  //   label: (
+  //     <Link to={import.meta.env.VITE_DASHBOARD_URL} target="_blank">
+  //       Dashboard
+  //     </Link>
+  //   ),
+  //   extra: <FaChevronRight />,
+  // },
   {
     key: "profile",
     icon: <FaUser />,

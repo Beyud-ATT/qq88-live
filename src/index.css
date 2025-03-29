@@ -214,7 +214,7 @@
 
   @media screen and (max-width: 768px) {
     #user-content {
-      background: #fbfafa;
+      background: var(--user-form-bg);
     }
   }
 }
