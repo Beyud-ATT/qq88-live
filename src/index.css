@@ -104,12 +104,12 @@
     border-radius: 8px 0 0 8px;
   }
 
-  .input-gradient-bg {
+  .input-gradient-bg:not(:focus):not(:focus-within) {
     background: linear-gradient(
       180deg,
       var(--color-brand-primary-lighter-2) 0%,
-      #fff 53%,
-      var(--color-brand-primary-lighter-2) 100%
+      r #fff 53%,
+      r var(--color-brand-primary-lighter-2) 100%
     ) !important;
   }
 
