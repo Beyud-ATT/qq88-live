@@ -7,7 +7,7 @@ import { useModal } from "./CompoundModal";
 import ForgotPassword from "./ForgotPassword";
 import LogoImg from "../assets/login-logo.png";
 
-export const inputStyle = `h-12 rounded-lg bg-[var(--color-brand-primary-lighter-2)] 
+export const inputStyle = `h-12 rounded-lg input-gradient-bg focus:!bg-none focus-within:!bg-none
 border-[2px] !border-[var(--color-brand-primary)] 
 focus:!shadow-[0px_1px_6.9px_0px_rgba(0,143,35,0.55)] !focus:outline-none
 focus-within:!shadow-[0px_1px_6.9px_0px_rgba(0,143,35,0.55)]`;

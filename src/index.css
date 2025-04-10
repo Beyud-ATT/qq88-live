@@ -34,7 +34,7 @@
   --text-color-login-signup: #85888e;
   --color-brand-primary: #006719;
   --color-brand-primary-lighter: #c0ffd0;
-  --color-brand-primary-lighter-2: #fbfafa;
+  --color-brand-primary-lighter-2: #f4fff7;
   --table-header-bg: #1f242f;
   --table-border-color: #333741;
   --disabled-field-bg: #dbdbdb;
@@ -96,20 +96,29 @@
     color: var(--text-color-login-signup);
   }
 
-  .user-action-dropdown {
-    border-radius: var(--border-radius);
-  }
-
-  .user-action-dropdown ul {
-    background-color: var(--lighter-background);
-  }
-
   #signup-form .flag-dropdown,
   #signup-form .react-tel-input .flag-dropdown .selected-flag:hover,
   #signup-form .react-tel-input .flag-dropdown .selected-flag:focus {
     background-color: transparent;
     border: #4b5563 0.5px solid;
     border-radius: 8px 0 0 8px;
+  }
+
+  .input-gradient-bg {
+    background: linear-gradient(
+      180deg,
+      var(--color-brand-primary-lighter-2) 0%,
+      #fff 53%,
+      var(--color-brand-primary-lighter-2) 100%
+    ) !important;
+  }
+
+  .user-action-dropdown {
+    border-radius: var(--border-radius);
+  }
+
+  .user-action-dropdown ul {
+    background-color: var(--lighter-background);
   }
 
   #profile-form .flag-dropdown {
