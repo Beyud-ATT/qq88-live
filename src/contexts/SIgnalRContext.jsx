@@ -55,7 +55,7 @@ const SignalRProvider = ({ children }) => {
           skipNegotiation: true,
         })
         // .configureLogging(signalR.LogLevel.Debug)
-        .withHubProtocol(new MsgPack.MessagePackHubProtocol())
+        // .withHubProtocol(new MsgPack.MessagePackHubProtocol())
         .withAutomaticReconnect({
           nextRetryDelayInMilliseconds: (retryContext) => {
             setConnectionStatus(signalRStatus.Disconnected);

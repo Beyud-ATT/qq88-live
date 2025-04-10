@@ -146,11 +146,9 @@ export default function ChatBar({ ...rest }) {
         manualReconnect();
       }
     }, 5000);
-
     if (currentHubConnection.current) {
       clearInterval(interval);
     }
-
     return () => {
       clearInterval(interval);
     };
