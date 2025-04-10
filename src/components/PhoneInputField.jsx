@@ -81,7 +81,8 @@ function PhoneInputField({ onChange, value, ...rest }) {
         value={phoneNumber}
         onChange={handlePhoneChange}
         inputClass="!h-12 
-          input-gradient-bg focus:!shadow-[0px_1px_6.9px_0px_rgba(0,143,35,0.55)]
+          input-gradient-bg 
+          focus:!shadow-[0px_1px_6.9px_0px_rgba(0,143,35,0.55)]
           !border-[2px] !border-[var(--color-brand-primary)] 
           !rounded-lg !w-full"
         inputProps={{

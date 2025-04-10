@@ -108,8 +108,8 @@
     background: linear-gradient(
       180deg,
       var(--color-brand-primary-lighter-2) 0%,
-      r #fff 53%,
-      r var(--color-brand-primary-lighter-2) 100%
+      #fff 53%,
+      var(--color-brand-primary-lighter-2) 100%
     ) !important;
   }
 
