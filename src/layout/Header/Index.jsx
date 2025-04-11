@@ -66,11 +66,14 @@ export default function BaseHeader({ ...rest }) {
           </Flex>
           <Marquee className="text-black overflow-hidden">
             <span>
-              QQ88 Kính Chào Qúy Khách! Link dễ nhớ: qq88.vin 📞📞Hotline:
-              0876665888 📧 Gmail: admin@QQ88.com ⭐️Kênh thông báo:
-              https://t.me/QQ88giaitritructuyenso1 ⭐️ Fanpage:
-              https://www.facebook.com/giaitriqq88 💥Nạp đầu tặng 100% Nổ hũ bắn
-              cá 💥 Tải APP tặng ngay 88k 💥
+              Link tổng chính thức của chúng tôi là: https://www.qq8827.com/ (
+              PC ), 52999.com ( Mobile ) ✅ Hotline: 0908667888 ✅ Gmail:
+              admin@QQ88.com 💥Tham gia ngay tặng liền tay OTO, Xe máy 💥Tặng
+              IPHONE16 PROMAX thứ 6 hàng tuần 💥Nạp đầu tặng 100% Nổ hũ bắn cá
+              💥 Hội viên VIP đầu tư một lần Lãi suất trọn đời 💥 Xem live thứ 6
+              21h-23h nhận ngay IPHONE 16 PROMAX hàng tuần💥Các khuyến lớn sẽ
+              được QQ88 phát đều đặn hàng tháng vào các ngày 08-18-28 hàng
+              tháng! 🧧
             </span>
           </Marquee>
         </Flex>
