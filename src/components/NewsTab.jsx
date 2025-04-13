@@ -18,6 +18,13 @@ function NewsTab() {
         description: "",
         id: `tab1`,
       },
+      {
+        title:
+          "sự kiện hot xem livestream bốc iphone: 19h-21h chủ nhật hàng tuần",
+        content: News,
+        description: "",
+        id: `tab2`,
+      },
     ],
     []
   );

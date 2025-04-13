@@ -3,7 +3,12 @@ import useLiveHot from "../../hooks/useLiveHot";
 import LivestreamPlayer from "../../components/VideoPlayer";
 import { useEffect, useState } from "react";
 
-import Hanna from "../../assets/hanna.webp";
+import Home from "../../assets/home.gif";
+import MainLive from "../../assets/main-live.webp";
+import { Link } from "react-router";
+
+const imageStyle =
+  "md:!w-[85%] md:!h-auto !w-[100px] !h-[55px] mx-auto object-cover aspect-video p-0.5 rounded-lg cursor-pointer";
 
 const LiveSection = () => {
   const { data, isLoading } = useLiveHot();
@@ -42,6 +47,16 @@ const LiveSection = () => {
               isJustifyBetween ? "justify-between" : "gap-y-[1%]"
             } h-full md:mt-0 mt-2`}
           >
+            <li>
+              <Link to="https://qq88.io/trangchu" target="_blank">
+                <Image
+                  src={Home}
+                  preview={false}
+                  loading="lazy"
+                  className={imageStyle}
+                />
+              </Link>
+            </li>
             {liveData?.map((stream, index) => {
               const isSelected = selectedStream
                 ? stream.streamId === selectedStream
@@ -54,8 +69,8 @@ const LiveSection = () => {
                 >
                   <Image
                     alt="Stream"
-                    src={Hanna}
-                    className={`md:!w-[85%] md:!h-auto !w-[100px] !h-[55px] mx-auto object-cover aspect-video p-0.5 rounded-lg cursor-pointer ${
+                    src={MainLive}
+                    className={`${imageStyle} ${
                       isSelected ? "bg-[var(--color-brand-primary)]" : ""
                     }`}
                     loading="lazy"
