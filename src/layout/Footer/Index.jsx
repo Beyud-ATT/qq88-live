@@ -25,7 +25,7 @@ export default function BaseFooter() {
   const { Footer } = useLayoutContext();
 
   return (
-    <Footer className="lg:block hidden bg-[url('./src/assets/footer-bg.webp')] bg-container bg-no-repeat bg-center bg-opacity-10 mt-20">
+    <Footer className="lg:block hidden bg-[url('/src/assets/footer-bg.webp')] bg-container bg-no-repeat bg-center bg-opacity-10 mt-20">
       <Flex
         vertical
         justify="center"
