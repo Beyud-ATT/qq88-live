@@ -3,6 +3,7 @@ import React, { useEffect, useMemo, useState } from "react";
 // import useHomeNews from "../hooks/useHomeNews";
 
 import News from "../assets/news.webp";
+import MainLive from "../assets/main-live.webp";
 
 function NewsTab() {
   const [activeTab, setActiveTab] = useState(null);
@@ -19,9 +20,8 @@ function NewsTab() {
         id: `tab1`,
       },
       {
-        title:
-          "sự kiện hot xem livestream bốc iphone: 19h-21h chủ nhật hàng tuần",
-        content: News,
+        title: "QQ88 MỪNG ĐẠI LỄ TẶNG XE SANG 20H-22H 30/04/2025 01/05/2025",
+        content: MainLive,
         description: "",
         id: `tab2`,
       },
