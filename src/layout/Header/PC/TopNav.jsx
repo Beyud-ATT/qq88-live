@@ -4,14 +4,10 @@ import { Link } from "react-router";
 
 export const items = [
   {
-    label: (
-      <Link to="" target="_blank">
-        Trang chủ
-      </Link>
-    ),
+    label: "Trang chủ",
     key: "home",
     render: (props) => (
-      <Link to="" target="_blank" {...props}>
+      <Link to={import.meta.env.VITE_HOME_URL} target="_blank" {...props}>
         Trang chủ
       </Link>
     ),
@@ -48,7 +44,7 @@ export const items = [
     label: "Tải App",
     key: "download",
     render: (props) => (
-      <Link to="" target="_blank" {...props}>
+      <Link to={import.meta.env.VITE_DOWNLOAD_URL} target="_blank" {...props}>
         Tải App
       </Link>
     ),

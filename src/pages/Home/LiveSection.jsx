@@ -48,7 +48,7 @@ const LiveSection = () => {
             } h-full md:mt-0 mt-2`}
           >
             <li>
-              <Link to="https://qq88.io/trangchu" target="_blank">
+              <Link to={import.meta.env.VITE_HOME_URL} target="_blank">
                 <Image
                   src={Home}
                   preview={false}
