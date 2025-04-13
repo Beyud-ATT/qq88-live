@@ -69,7 +69,7 @@ const LiveSection = () => {
                 >
                   <Image
                     alt="Stream"
-                    src={MainLive}
+                    src={stream?.thumbnail || MainLive}
                     className={`${imageStyle} ${
                       isSelected ? "bg-[var(--color-brand-primary)]" : ""
                     }`}

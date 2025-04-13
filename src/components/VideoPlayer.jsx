@@ -428,7 +428,11 @@ const LivestreamPlayer = ({ liveId }) => {
               className="w-full h-full bg-[var(--video-player-bg)]"
             >
               {!isLiveDetailLoading && !isLoading && (
-                <Image src={MainLive} preview={false} loading="lazy" />
+                <Image
+                  src={liveDetailData?.thumbnail || MainLive}
+                  preview={false}
+                  loading="lazy"
+                />
               )}
             </Flex>
           </div>
