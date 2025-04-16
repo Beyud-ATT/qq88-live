@@ -15,6 +15,8 @@ import { MdOutlineUpdateDisabled, MdPlayDisabled } from "react-icons/md";
 import { useSignalR } from "../contexts/SIgnalRContext";
 import { CiStreamOn } from "react-icons/ci";
 
+import MainLive from "../assets/main-live.webp";
+
 const LivestreamPlayerMobile = ({ liveId }) => {
   const videoRef = useRef(null);
   const playerRef = useRef(null);
@@ -291,10 +293,7 @@ const LivestreamPlayerMobile = ({ liveId }) => {
           >
             {!isLiveDetailLoading && !isLoading && (
               <Image
-                src={
-                  liveDetailData?.thumbnail ??
-                  "https://newlive.sgp1.cdn.digitaloceanspaces.com/newlive/photo_2025-01-27_19-07-46.jpg"
-                }
+                src={liveDetailData?.thumbnail || MainLive}
                 preview={false}
                 loading="lazy"
               />
