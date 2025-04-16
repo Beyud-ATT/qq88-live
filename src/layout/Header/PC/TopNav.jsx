@@ -26,11 +26,11 @@ export const items = [
     ),
   },
   {
-    label: "Liveshow",
-    key: "liveshow",
+    label: <Link to="https://qq88km8.com/">NHẬP CODE</Link>,
+    key: "code",
     render: (props) => (
-      <Link to="/" {...props}>
-        Liveshow
+      <Link to="https://qq88km8.com/" {...props}>
+        NHẬP CODE
       </Link>
     ),
   },
