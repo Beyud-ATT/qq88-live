@@ -13,6 +13,8 @@ import moment from "moment/moment";
 import useScrollDirection from "../../hooks/useScrollDirection";
 import useMobileKeyboardOpen from "../../hooks/useMobileKeyboardOpen";
 import { chatHeightSetting } from "../../utils/constant";
+import { Flex } from "antd";
+import { detectUrls } from "../../utils/helper";
 
 function ShowMore({ message, show, ...rest }) {
   const [showMore, setShowMore] = useState(false);
@@ -60,6 +62,11 @@ function PinnedMessage() {
   const [show, setShow] = useState(false);
 
   const { newPinnedMsg, resetNewPinnedMsg } = useSignalR();
+
+  const URLs = detectUrls(messages[currentMessageIndex]);
+  const handleCopy = useCallback(() => {
+    navigator.clipboard.writeText(URLs);
+  }, [URLs]);
 
   const handleMessageClick = useCallback(
     (e) => {
@@ -109,7 +116,7 @@ function PinnedMessage() {
               </div>
             </div>
 
-            <div>
+            <Flex justify="center" align="center">
               {show ? (
                 <button type="button" className="m-1 cursor-pointer">
                   <IoMdArrowDropup
@@ -125,7 +132,17 @@ function PinnedMessage() {
                   />
                 </button>
               )}
-            </div>
+
+              {URLs?.length > 0 && (
+                <button
+                  type="button"
+                  className="m-1 cursor-pointer"
+                  onClick={handleCopy}
+                >
+                  <FaCopy className="text-[#E71818] text-lg  cursor-pointer" />
+                </button>
+              )}
+            </Flex>
           </div>
         </div>
       </div>
