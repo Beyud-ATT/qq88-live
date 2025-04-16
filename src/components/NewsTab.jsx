@@ -14,7 +14,7 @@ function NewsTab() {
     () => [
       {
         title:
-          "sự kiện hot xem livestream bốc iphone: 19h-21h chủ nhật hàng tuần",
+          "sự kiện hot xem livestream bốc iphone: 21h-23h chủ nhật hàng tuần",
         content: News,
         description: "",
         id: `tab1`,
