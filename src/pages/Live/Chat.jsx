@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef, useCallback, useMemo } from "react";
 import ChatBar from "./ChatBar";
 import { useSignalR } from "../../contexts/SIgnalRContext";
-import { FaCrown, FaRegEyeSlash } from "react-icons/fa";
+import { FaCopy, FaCrown, FaRegEyeSlash } from "react-icons/fa";
 import { useParams } from "react-router";
 import useLiveDetail from "../../hooks/useLiveDetail";
 import parse from "html-react-parser";
