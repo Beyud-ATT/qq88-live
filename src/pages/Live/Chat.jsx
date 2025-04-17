@@ -424,7 +424,7 @@ function BareChatFrame() {
                   <span>:</span>
                 </div>
                 <div
-                  className={`text-gray-300 leading-relaxed ${
+                  className={`text-black leading-relaxed ${
                     isSpecial ? "!text-[#FF6699] font-bold" : ""
                   } break-all`}
                 >
