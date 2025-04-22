@@ -2,7 +2,7 @@ import { Image, Typography } from "antd";
 import React, { useEffect, useMemo, useState } from "react";
 // import useHomeNews from "../hooks/useHomeNews";
 
-import News from "../assets/news.webp";
+import News from "../assets/news.png";
 import MainLive from "../assets/main-live.webp";
 
 function NewsTab() {
@@ -13,8 +13,7 @@ function NewsTab() {
   const news = useMemo(
     () => [
       {
-        title:
-          "sự kiện hot xem livestream bốc iphone: 21h-23h chủ nhật hàng tuần",
+        title: "sự kiện hot xem livestream bốc iphone: 21h-23h thứ 6 hàng tuần",
         content: News,
         description: "",
         id: `tab1`,
