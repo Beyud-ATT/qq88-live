@@ -7,12 +7,10 @@ import {
   FaCompress,
   FaVolumeMute,
   FaVolumeUp,
-  FaRegEye,
-  FaShare,
 } from "react-icons/fa";
 import flvjs from "flv.js";
 import Hls from "hls.js";
-import { Avatar, Button, Flex, Image, Spin, Typography } from "antd";
+import { Button, Flex, Image, Spin } from "antd";
 import { useLocation, useNavigate } from "react-router";
 import useLiveDetail from "../hooks/useLiveDetail";
 import Countdown from "./CountDown";
@@ -51,7 +49,7 @@ const LivestreamPlayer = ({ liveId }) => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [needsInteraction, setNeedsInteraction] = useState(
-    !pathname.includes("/live/")
+    !pathname.includes("/live/") && !pathname.includes("/live-mobile/")
   );
   const [isLive, setIsLive] = useState(true);
 
