@@ -53,7 +53,7 @@ export default function LiveMobile() {
 
   return (
     <div
-      className={`relative w-full h-[100dvh] overflow-hidden transition-all duration-300 ease-in-out`}
+      className={`w-full h-[100dvh] overflow-hidden transition-all duration-300 ease-in-out`}
     >
       <div
         className={`w-full overflow-hidden flex flex-col justify-between h-full`}
@@ -99,7 +99,7 @@ export default function LiveMobile() {
           </div>
         </div>
 
-        <div className="absolute top-[9%] left-0 w-full z-0 px-2">
+        <div className="w-full z-0 px-2">
           <LivestreamPlayer liveId={id} />
         </div>
 
