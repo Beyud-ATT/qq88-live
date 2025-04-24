@@ -55,7 +55,7 @@ const LivestreamPlayer = ({ liveId }) => {
   );
   const [isLive, setIsLive] = useState(true);
 
-  const { viewer, streamsInfo } = useSignalR();
+  const { streamsInfo } = useSignalR();
 
   const { data: liveData, isLoading: isLiveDetailLoading } =
     useLiveDetail(liveId);
@@ -297,7 +297,13 @@ const LivestreamPlayer = ({ liveId }) => {
 
   const handleFullscreen = () => {
     if (!document.fullscreenElement && !document.webkitFullscreenElement) {
-      if (containerRef.current.requestFullscreen) {
+      if (
+        videoRef.current &&
+        (navigator.userAgent.match(/iPhone/i) ||
+          navigator.userAgent.match(/iPad/i))
+      ) {
+        videoRef.current.webkitEnterFullscreen();
+      } else if (containerRef.current.requestFullscreen) {
         containerRef.current.requestFullscreen();
       } else if (containerRef.current.webkitRequestFullscreen) {
         containerRef.current.webkitRequestFullscreen();
@@ -350,181 +356,117 @@ const LivestreamPlayer = ({ liveId }) => {
     }
   };
 
-  const handleShare = () => {
-    if (navigator.share) {
-      navigator.share({
-        title: "QQ88 Live",
-        text: "Hãy xem thử livestream của chúng tôi!!!",
-        url: window.location.href,
-      });
-    }
-  };
-
   return (
-    <>
-      {pathname.includes("live") && (
-        <div className="w-full px-4 h-[85px] flex items-center justify-between">
-          <div className="flex">
-            <Avatar
-              src={liveDetailData?.avatar}
-              className="md:!w-16 md:!h-16 !w-12 !h-12"
-            />
-            <div className="flex flex-col justify-center ml-4">
-              <Typography.Title
-                level={2}
-                className="!font-bold !text-[var(--color-brand-primary)] xl:!text-[1.0rem] lg:!text-[.7rem] !text-[.5rem]"
-              >
-                {liveDetailData?.title}
-              </Typography.Title>
-              <div className="flex items-center justify-start space-x-4">
-                <Typography.Title
-                  level={3}
-                  className="!font-bold xl:!text-[.8rem] !text-[.6rem] !m-0 !text-[var(--color-brand-primary)]"
-                >
-                  {liveDetailData?.displayName}
-                </Typography.Title>
-                <div className="flex items-center justify-center space-x-1 text-[var(--color-brand-primary)]">
-                  <FaRegEye />
-                  <span>
-                    {isStreaming && viewer !== 0
-                      ? viewer
-                      : isStreaming && liveDetailData
-                      ? liveDetailData?.viewer
-                      : 0}
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <button
-            type="button"
-            onClick={handleShare}
-            className={`text-white 
-              xl:text-base md:text-[12px] text-[10px] 
-              flex items-center space-x-2 rounded-lg
-              border-[2px] border-[#F81E02]
-              py-1 px-2 animate-blink`}
-            style={{
-              background:
-                "linear-gradient(180deg, #FB543F 0%, #F91E02 20%, #F91E02 100%)",
-            }}
+    <div
+      ref={containerRef}
+      className={`w-full ${videoLiveHeightSetting} overflow-hidden rounded-2xl`}
+    >
+      {!isStreaming && (
+        <div className={`z-0 w-full h-full`}>
+          <Flex
+            vertical
+            justify="center"
+            align="center"
+            className="w-full h-full bg-[var(--video-player-bg)]"
           >
-            <FaShare className="md:text-2xl text-lg" />
-            <span className="whitespace-nowrap">Chia sẻ</span>
-          </button>
+            {!isLiveDetailLoading && !isLoading && (
+              <Image
+                src={liveDetailData?.thumbnail || MainLive}
+                preview={false}
+                loading="lazy"
+              />
+            )}
+          </Flex>
         </div>
       )}
 
-      <div
-        ref={containerRef}
-        className={`w-full ${videoLiveHeightSetting} overflow-hidden rounded-2xl`}
-      >
-        {!isStreaming && (
-          <div className={`z-0 w-full h-full`}>
-            <Flex
-              vertical
-              justify="center"
-              align="center"
-              className="w-full h-full bg-[var(--video-player-bg)]"
-            >
-              {!isLiveDetailLoading && !isLoading && (
-                <Image
-                  src={liveDetailData?.thumbnail || MainLive}
-                  preview={false}
-                  loading="lazy"
-                />
-              )}
-            </Flex>
-          </div>
-        )}
+      {(isLiveDetailLoading || isLoading) && (
+        <div className={`relative ${videoLiveHeightSetting}`}>
+          <Spin
+            size="large"
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full live-detail-spinning"
+          />
+        </div>
+      )}
 
-        {(isLiveDetailLoading || isLoading) && (
-          <div className={`relative ${videoLiveHeightSetting}`}>
-            <Spin
-              size="large"
-              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full live-detail-spinning"
-            />
-          </div>
-        )}
+      <video
+        ref={videoRef}
+        className={`object-contain rounded-2xl w-full ${videoLiveHeightSetting}`}
+        playsInline
+        muted={isMuted}
+      />
 
-        <video
-          ref={videoRef}
-          className={`object-contain rounded-2xl w-full ${videoLiveHeightSetting}`}
-          playsInline
-          muted={isMuted}
-        />
+      {needsInteraction && !isLiveDetailLoading && (
+        <div className="absolute inset-0 bg-black/40 flex items-center justify-center cursor-pointer rounded-2xl">
+          <Button
+            variant="outlined"
+            className="md:p-6 p-2 rounded-full !bg-white/80 hover:!bg-[var(--color-brand-primary)] !text-[var(--color-brand-primary)] md:text-base text-[12px] hover:!text-white uppercase font-bold border-[var(--color-brand-primary)] hover:!border-white"
+            onClick={handleInitialPlay}
+          >
+            Vào Phòng Live
+          </Button>
+        </div>
+      )}
 
-        {needsInteraction && !isLiveDetailLoading && (
-          <div className="absolute inset-0 bg-black/40 flex items-center justify-center cursor-pointer rounded-2xl">
-            <Button
-              variant="outlined"
-              className="md:p-6 p-2 rounded-full !bg-white/80 hover:!bg-[var(--color-brand-primary)] !text-[var(--color-brand-primary)] md:text-base text-[12px] hover:!text-white uppercase font-bold border-[var(--color-brand-primary)] hover:!border-white"
-              onClick={handleInitialPlay}
-            >
-              Vào Phòng Live
-            </Button>
-          </div>
-        )}
-
-        <div className="rounded-b-2xl absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent">
-          <div className="flex justify-between items-center gap-4">
-            <Flex gap={16}>
-              {isStreaming ? (
-                <>
-                  <button
-                    onClick={handlePlayPause}
-                    className="text-white hover:text-gray-600"
-                  >
-                    {isPlaying ? (
-                      <FaPause className="md:text-xl text-lg" />
-                    ) : (
-                      <FaPlay className="md:text-xl text-lg" />
-                    )}
-                  </button>
-                  <button
-                    onClick={handleReplay}
-                    className="text-white hover:text-gray-600"
-                  >
-                    <FaRedo className="md:text-xl text-lg" />
-                  </button>
-                </>
-              ) : (
-                <>
-                  <button className="text-white hover:text-gray-600">
-                    <MdPlayDisabled className="md:text-2xl text-lg" />
-                  </button>
-                  <button className="text-white hover:text-gray-600">
-                    <MdOutlineUpdateDisabled className="md:text-2xl text-lg" />
-                  </button>
-                </>
-              )}
-            </Flex>
-            {!isStreaming && liveDetailData?.scheduleTime && (
-              <Flex>
-                <Countdown time={liveDetailData?.scheduleTime} />
-              </Flex>
-            )}
-            <Flex gap={16}>
-              <div ref={volumeControlRef} className="flex items-center">
+      <div className="rounded-b-2xl absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent">
+        <div className="flex justify-between items-center gap-4">
+          <Flex gap={16}>
+            {isStreaming ? (
+              <>
                 <button
-                  onClick={toggleMute}
+                  onClick={handlePlayPause}
                   className="text-white hover:text-gray-600"
                 >
-                  {isMuted ? (
-                    <FaVolumeMute className="md:text-xl text-lg" />
+                  {isPlaying ? (
+                    <FaPause className="md:text-xl text-lg" />
                   ) : (
-                    <FaVolumeUp className="md:text-xl text-lg" />
+                    <FaPlay className="md:text-xl text-lg" />
                   )}
                 </button>
-                <div className="w-24 h-8 rounded-lg items-center px-3 transform rotate-270 md:flex hidden">
-                  <input
-                    type="range"
-                    min="0"
-                    max="100"
-                    value={volume}
-                    onChange={handleVolumeChange}
-                    style={getVolumePercentageStyle()}
-                    className="w-full h-1 rounded-lg appearance-none cursor-pointer 
+                <button
+                  onClick={handleReplay}
+                  className="text-white hover:text-gray-600"
+                >
+                  <FaRedo className="md:text-xl text-lg" />
+                </button>
+              </>
+            ) : (
+              <>
+                <button className="text-white hover:text-gray-600">
+                  <MdPlayDisabled className="md:text-2xl text-lg" />
+                </button>
+                <button className="text-white hover:text-gray-600">
+                  <MdOutlineUpdateDisabled className="md:text-2xl text-lg" />
+                </button>
+              </>
+            )}
+          </Flex>
+          {!isStreaming && liveDetailData?.scheduleTime && (
+            <Flex>
+              <Countdown time={liveDetailData?.scheduleTime} />
+            </Flex>
+          )}
+          <Flex gap={16}>
+            <div ref={volumeControlRef} className="flex items-center">
+              <button
+                onClick={toggleMute}
+                className="text-white hover:text-gray-600"
+              >
+                {isMuted ? (
+                  <FaVolumeMute className="md:text-xl text-lg" />
+                ) : (
+                  <FaVolumeUp className="md:text-xl text-lg" />
+                )}
+              </button>
+              <div className="w-24 h-8 rounded-lg items-center px-3 transform rotate-270 md:flex hidden">
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  value={volume}
+                  onChange={handleVolumeChange}
+                  style={getVolumePercentageStyle()}
+                  className="w-full h-1 rounded-lg appearance-none cursor-pointer 
                         [&::-webkit-slider-thumb]:appearance-none 
                         [&::-webkit-slider-thumb]:w-3 
                         [&::-webkit-slider-thumb]:h-3 
@@ -543,35 +485,27 @@ const LivestreamPlayer = ({ liveId }) => {
                         [&::-moz-range-thumb]:rounded-full
                         [&::-moz-range-track]:rounded-lg
                         [&::-moz-range-track]:bg-transparent"
-                  />
-                </div>
+                />
               </div>
+            </div>
 
-              {isStreaming && (
-                <div className="items-center px-1 gap-1 flex rounded-lg bg-red-500 text-white">
-                  <CiStreamOn
-                    className="text-xl animate-pulse"
-                    strokeWidth={1}
-                  />
-                  <span className="text-[12px] uppercase">trực tiếp</span>
-                </div>
-              )}
+            {isStreaming && (
+              <div className="items-center px-1 gap-1 flex rounded-lg bg-red-500 text-white">
+                <CiStreamOn className="text-xl animate-pulse" strokeWidth={1} />
+                <span className="text-[12px] uppercase">trực tiếp</span>
+              </div>
+            )}
 
-              <button
-                onClick={handleFullscreen}
-                className="text-white hover:text-gray-600"
-              >
-                {isFullscreen ? (
-                  <FaCompress size={20} />
-                ) : (
-                  <FaExpand size={20} />
-                )}
-              </button>
-            </Flex>
-          </div>
+            <button
+              onClick={handleFullscreen}
+              className="text-white hover:text-gray-600"
+            >
+              {isFullscreen ? <FaCompress size={20} /> : <FaExpand size={20} />}
+            </button>
+          </Flex>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -9,6 +9,7 @@ import { useNavigate, useParams } from "react-router";
 import { screenType, useDevice } from "../../contexts/ResponsiveContext";
 import { useEffect } from "react";
 import { ChatInterface } from "./Chat";
+import Header from "./Header";
 
 const LivestreamDetail = ({ ...props }) => {
   const { id } = useParams();
@@ -31,6 +32,7 @@ const LivestreamDetail = ({ ...props }) => {
           lg={{ flex: "65%" }}
           xl={{ flex: "70%" }}
         >
+          <Header />
           <LivestreamPlayer liveId={id} />
         </Col>
         <Col

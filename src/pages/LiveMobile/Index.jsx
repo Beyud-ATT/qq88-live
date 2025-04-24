@@ -1,6 +1,5 @@
 import { useNavigate, useParams } from "react-router";
 import useLiveDetail from "../../hooks/useLiveDetail";
-import LivestreamPlayerMobile from "../../components/VideoPlayerMobile";
 import { Avatar } from "antd";
 import { useSignalR } from "../../contexts/SIgnalRContext";
 import { screenType, useDevice } from "../../contexts/ResponsiveContext";
@@ -9,6 +8,7 @@ import { FaEye, FaShare } from "react-icons/fa6";
 import { IoCloseSharp } from "react-icons/io5";
 import Countdown from "../../components/CountDown";
 import { ChatInterface } from "../Live/Chat";
+import LivestreamPlayer from "../../components/VideoPlayer";
 
 const ViewerCount = ({ liveDetailData }) => {
   const { viewer } = useSignalR();
@@ -100,7 +100,7 @@ export default function LiveMobile() {
         </div>
 
         <div className="absolute top-[9%] left-0 w-full z-0 px-2">
-          <LivestreamPlayerMobile liveId={id} />
+          <LivestreamPlayer liveId={id} />
         </div>
 
         <div
