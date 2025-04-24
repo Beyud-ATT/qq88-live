@@ -357,7 +357,7 @@ const LivestreamPlayer = ({ liveId }) => {
   return (
     <div
       ref={containerRef}
-      className={`w-full ${videoLiveHeightSetting} overflow-hidden rounded-2xl`}
+      className={`relative w-full ${videoLiveHeightSetting} overflow-hidden rounded-2xl`}
     >
       {!isStreaming && (
         <div className={`z-0 w-full h-full`}>
