@@ -103,10 +103,7 @@ export default function LiveMobile() {
           <LivestreamPlayer liveId={id} />
         </div>
 
-        <div
-          className="h-fit border border-[var(--color-brand-primary)] rounded-xl mx-2 mb-2"
-          style={{ boxShadow: "0px 2px 0px 0px #02A9DC" }}
-        >
+        <div className="h-fit border border-[var(--color-brand-primary)] rounded-xl mx-2 mb-2">
           <div className="uppercase bg-[var(--color-brand-primary)] text-[#F8E54F] text-xl rounded-t-lg text-center font-bold py-[10px]">
             bình luận
           </div>
