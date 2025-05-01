@@ -12,7 +12,7 @@ export default function ViewerCount() {
   const { isStreaming, viewer: liveViewer } = liveDetailData || {};
 
   return (
-    <div className="flex items-center justify-center space-x-1 text-[var(--color-brand-primary)]">
+    <div className="flex items-center space-x-1 text-[var(--color-brand-primary)]">
       <FaRegEye />
       <span>
         {isStreaming && viewer !== 0
